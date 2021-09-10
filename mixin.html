@@ -1,0 +1,51 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-09-07 17:14:11
+ * @LastEditTime: 2021-09-08 16:13:48
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root">
+    {{number}}
+    {{counter}}
+  </div>
+</body>
+<script>
+  const myMixin = {
+    data() {
+      return {
+        number:2,
+        counter:11
+      }
+    },
+
+    created() {
+      console.log('mixin created: ',);
+    },
+  }
+
+  const app = Vue.createApp({
+    data() {
+      return {
+        msg: 'hello vue',
+        number:1,
+      }
+    },
+    mixins:[myMixin],
+    created() {
+      console.log('component. created: ',);
+    },
+  })
+  app.mount('#root')
+</script>
+</html>

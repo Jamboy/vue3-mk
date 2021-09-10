@@ -1,0 +1,63 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-09-07 17:14:11
+ * @LastEditTime: 2021-09-08 16:52:25
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .header{
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    {{msg}}
+    <div v-pos="200" class="header">
+      <input >
+      <input v-focus >
+    </div>
+
+  </div>
+</body>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        msg: 'hello vue',
+        counter: 1
+      }
+    },
+  })
+
+  app.directive('focus',{
+    mounted(el) {
+      el.focus()
+    },
+  })
+
+  // app.directive('pos',{
+  //   mounted(el,binding) {
+  //     el.style.top = binding.value + 'px'
+  //   },
+    
+  //   updated(el,binding) {
+  //     el.style.top = binding.value + 'px'
+  //   },
+  // })
+  app.directive('pos', (el,binding) =>{
+      el.style.top = binding.value + 'px'
+  })
+
+  app.mount('#root')
+</script>
+</html>

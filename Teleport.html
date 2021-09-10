@@ -1,0 +1,71 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-09-07 17:14:11
+ * @LastEditTime: 2021-09-08 16:59:41
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .area{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 200px;
+      height: 300px;
+      background: #000;
+    }
+    .mask{
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: green;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div class="area">
+      <button  @click="handleClick">按钮</button>
+      <teleport to="body" >
+        <div class="mask" v-show="show"></div>
+      </teleport>
+    </div>
+  </div>
+</body>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        msg: 'hello vue',
+        counter: 1,
+        show:false
+      }
+    },
+
+    mounted() {
+      setInterval(()=>{
+        this.counter ++
+      },1000)
+    },
+
+    methods: {
+      handleClick(){
+        this.show = !this.show
+      }
+    },
+  })
+  app.mount('#root')
+</script>
+</html>

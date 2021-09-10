@@ -1,0 +1,81 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-09-07 16:59:32
+ * @LastEditTime: 2021-09-09 17:02:05
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root">
+    <input v-model="inputValue" @input="handleInputValueChange">
+    <button @click="addItemToList(inputValue)">添加</button>
+    <button @click="handleClear">清除</button>
+    <ul>
+      <li v-for="(item, index) in items" :key="index">
+        <todo-item :msg="item"></todo-item>
+      </li>
+    </ul>
+  </div>  
+</body>
+<script>
+  // 封装list
+    const listReactiveEffect = ()=>{
+      const { reactive} = Vue
+      const items = reactive([])
+      const addItemToList = (item) =>{
+        items.push(item)
+      }
+      
+      const handleClear = () =>{
+        items.forEach((el,index) => {
+          items.splice(index,items.length)
+        });
+      }
+      return{items, addItemToList, handleClear}
+    }
+
+    // 封装
+    const inputValueChange = ()=>{
+      const {ref} = Vue
+      const inputValue = ref('')
+      const handleInputValueChange = (e) =>{
+        inputValue.value = e.target.value
+      }
+
+      return {inputValue, handleInputValueChange}
+    }
+    
+
+  const app = Vue.createApp({
+    // 流程调度
+    setup(props) {
+      const {items, addItemToList, handleClear} = listReactiveEffect()
+      const {inputValue, handleInputValueChange} = inputValueChange()
+      return{
+        items, addItemToList,handleClear,
+        inputValue, handleInputValueChange
+      }
+    }
+    
+  })
+
+  app.component('todo-item',{
+    props:{
+      msg: {
+        type: String
+      }
+    },
+    template: '<div>{{msg}}</div>'
+  })
+
+  app.mount('#root')
+</script>
+</html>

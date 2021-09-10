@@ -1,0 +1,70 @@
+
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-09-08 14:00:56
+ * @LastEditTime: 2021-09-08 15:40:40
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root">
+    <world></world><hello></hello>
+    <counter ></counter>
+    <countera></countera>
+  </div>
+</body>
+<script>
+  const countera = {
+     data() {
+       return {
+         count:11
+       }
+     },
+     template: '<div @click="count+=1">{{count}}</div>'
+   }
+
+   const app = Vue.createApp({
+     components:{
+      countera
+     },
+     data() {
+       return {
+         msg:'hello'
+       }
+     },
+     mounted() {
+       console.log('mounted: ');
+     },
+   })
+
+
+
+   app.component('hello',{
+     template: '<div>hello1</div>'
+   })
+   
+   app.component('world',{
+     template: '<div>world</div>'
+   })
+
+   app.component('counter',{
+     data() {
+       return {
+         count:1
+       }
+     },
+     template: '<div @click="count+=1">{{count}}</div>'
+   })
+
+   const vm = app.mount('#root')
+   
+</script>
+</html>

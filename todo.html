@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-09-07 16:59:32
- * @LastEditTime: 2021-09-07 18:11:46
+ * @LastEditTime: 2021-09-08 13:56:18
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,9 @@
     <button @click="handleAdd">添加</button>
     <button @click="handleClear">清除</button>
     <ul>
-      <li v-for="(item, index) in items" :key="index">{{item}}</li>
+      <li v-for="(item, index) in items" :key="index">
+        <todo-item :msg="item"></todo-item>
+      </li>
     </ul>
   </div>  
 </body>
@@ -42,6 +44,17 @@
       }
 
     },
-  }).mount('#root')
+  })
+
+  app.component('todo-item',{
+    props:{
+      msg: {
+        type: String
+      }
+    },
+    template: '<div>{{msg}}</div>'
+  })
+
+  app.mount('#root')
 </script>
 </html>
