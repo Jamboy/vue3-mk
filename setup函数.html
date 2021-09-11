@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-09-07 17:14:11
- * @LastEditTime: 2021-09-09 16:01:00
+ * @LastEditTime: 2021-09-10 16:30:02
 -->
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
       this.handleChange()
     },
     setup(props,context) {
-     const { ref, reactive,readonly } = Vue
+     const { ref, reactive, readonly } = Vue
      let name = ref('dell')
      setTimeout(()=>{
         name.value = 'fff'
@@ -71,8 +71,7 @@
       // return () => h('div',{},slots.default())
     }
   })
-
-
+  
   app.mount('#root')
 </script>
 </html>

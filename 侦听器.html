@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-09-07 17:14:11
- * @LastEditTime: 2021-09-09 17:54:58
+ * @LastEditTime: 2021-09-10 14:02:44
 -->
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
 <script>
   const app = Vue.createApp({
       setup(props) {
-        const {ref,reactive, watch,toRefs} = Vue
+        const { ref,reactive, watch,toRefs }  = Vue
         const name1 = ref('')
         const obj = reactive({name: '1fff'})
         watch(() => obj.name,(currentValue,preValue)=>{
