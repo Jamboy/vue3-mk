@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="warper">
-      1
+      <div class="position">
+        <span class="iconfont position__icon">&#xe60f;</span>
+        深圳市时撒发发发发送到街坊邻居fffffffffffff发呆fasdfasdfasdfsd
+        <span class="iconfont position__notice">&#xe603;</span>
+      </div>
     </div>
     <div class="docker">
       <span class="docker__item docker__item--active">
@@ -25,16 +29,39 @@
 </template>
 
 <style lang="scss">
-.warper{
+@import "../style/viriables";
+@import "../style/mixins";
+.warper {
   position: absolute;
   left: 0;
   top: 0;
-  bottom: .5rem;
+  bottom: 0.5rem;
   right: 0;
   background: aqua;
+  padding: 0 0.18rem;
+}
+.position {
+  @include ellipsis;
+  position: relative;
+  padding: 0.16rem 0.24rem 0.16rem 0;
+  font-size: 0.16rem;
+  line-height: 0.16rem;
+  .position__icon {
+    position: relative;
+    padding-top: 0.01rem;
+    font-size: 0.2rem;
+  }
+  .position__notice {
+    position: absolute;
+    right: 0;
+    top: 0.17rem;
+    font-size: 0.2rem;
+  }
+  color: $content-fontcolor;
 }
 
 .docker {
+  color: $content-fontcolor;
   display: flex;
   position: absolute;
   padding: 0 0.18rem;
@@ -43,8 +70,7 @@
   bottom: 0;
   width: 100%;
   height: 0.49rem;
-  border-top: .01rem solid #f1f1f1;
-
+  border-top: 0.01rem solid #f1f1f1;
   &__item {
     flex: 1;
     text-align: center;
@@ -58,7 +84,7 @@
   }
 
   &__title {
-    font-size: .2rem;
+    font-size: 0.2rem;
     transform: scale(0.5, 0.5);
     transform-origin: center top;
   }
