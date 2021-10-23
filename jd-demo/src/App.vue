@@ -6,6 +6,9 @@
         深圳市时撒发发发发送到街坊邻居fffffffffffff发呆fasdfasdfasdfsd
         <span class="iconfont position__notice">&#xe603;</span>
       </div>
+      <div class="search">
+        <span>反反复复</span>
+      </div>
     </div>
     <div class="docker">
       <span class="docker__item docker__item--active">
@@ -37,7 +40,6 @@
   top: 0;
   bottom: 0.5rem;
   right: 0;
-  background: aqua;
   padding: 0 0.18rem;
 }
 .position {
@@ -58,6 +60,13 @@
     font-size: 0.2rem;
   }
   color: $content-fontcolor;
+}
+
+.search {
+  line-height: 0.32rem;
+  background: #f5f5f5;
+  color: #b7b7b7;
+  border-radius: 0.16rem;
 }
 
 .docker {

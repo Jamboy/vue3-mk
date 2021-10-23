@@ -1,0 +1,52 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-10-22 09:29:01
+ * @LastEditTime: 2021-10-22 09:33:53
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function SuperType() {
+    this.property = true
+  }
+
+  SuperType.prototype.getSuperValue = function(){
+    return this.property
+  }
+
+  function SubType(){
+    this.property = false
+  }
+
+
+  // SubType.prototype = {
+  //   getSubValue(){
+  //     return this.subproperty
+  //   },
+  //   somOtherMethod(){
+  //     return false
+  //   }
+  // }
+
+  SubType.prototype = new SuperType()
+
+  SubType.prototype.getSubValue = function(){
+    return true;
+  }
+
+  let sub = new SubType()
+  console.log(sub.getSuperValue());
+  console.log(sub.getSubValue());
+
+</script>
+</html>

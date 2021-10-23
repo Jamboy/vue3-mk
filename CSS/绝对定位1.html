@@ -1,0 +1,91 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-09-27 10:25:21
+ * @LastEditTime: 2021-10-15 11:33:16
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="carousel">
+    <img src="./test.png">
+    <a class="left btn">&lt;</a>
+    <a class="right btn">&gt;</a>
+    <ol>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+  </div>
+</body>
+<style>
+  * {
+    margin: 0;
+    padding: 0px;
+  }
+
+  .carousel {
+    width: 650px;
+    height: 360px;
+    border: 1px solid #000;
+    margin: 40 auto;
+    position: relative;
+    background-color: red;
+  }
+
+  .btn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-top: -20px;
+    top: 50%;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    background-color: rgba(255, 255, 255, .5);
+    color: red;
+    cursor: pointer;
+    font-family: consolas;
+  }
+
+  .btn:hover {
+    background-color: gold;
+    color: white;
+  }
+
+  .left {
+    left: 10px;
+  }
+
+  .right {
+    right: 10px;
+  }
+
+  ol {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 200px;
+    height: 20px;
+  }
+
+  li{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    border-radius: 50%;
+    margin-right: 10px;
+    list-style: none;
+  }
+</style>
+
+</html>
