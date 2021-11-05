@@ -1,9 +1,3 @@
-/*
- * @Description: 
- * @Author: Jamboy
- * @Date: 2021-09-13 13:51:39
- * @LastEditTime: 2021-11-04 14:47:58
- */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
