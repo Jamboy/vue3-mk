@@ -1,0 +1,54 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-11-05 15:15:01
+ * @LastEditTime: 2021-11-05 15:52:13
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{count}}
+    <div>{{filterValue}}</div>
+  </div>
+</body>
+<script>
+  const { ref, watch, onMounted, computed} = Vue
+  const app = Vue.createApp({
+    setup(props) {
+      let count = ref(111)
+
+      const filterValue = computed(()=> count.value * 2)
+
+      onMounted(() => {
+        console.log('onM');
+        setTimeout(() => {
+          count.value = 10
+        }, 1000)
+      })
+
+      const test = () => {
+        console.log('test' + count.value);
+      }
+
+      watch(count, (val, preVal) => {
+        console.log('val,preVal: ', val, preVal);
+      })
+
+      return {
+        count, filterValue
+      }
+    },
+  }).mount('#app')
+</script>
+
+</html>
