@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-05 15:15:01
- * @LastEditTime: 2021-11-05 15:52:13
+ * @LastEditTime: 2021-11-05 16:21:47
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +19,22 @@
   <div id="app">
     {{count}}
     <div>{{filterValue}}</div>
+    <div>{{nameObj.name}}</div>
+    <div>{{name}}</div>
+    <div>{{age}}</div>
   </div>
 </body>
 <script>
-  const { ref, watch, onMounted, computed} = Vue
+  const { ref, reactive,watch, onMounted, computed, toRefs, toRef} = Vue
   const app = Vue.createApp({
     setup(props) {
       let count = ref(111)
+
+      const nameObj = reactive({name:'Jam'})
+
+      const {name} = toRefs(nameObj)
+      const {age} = toRefs(nameObj)
+      // const age = toRef(nameObj,'age')
 
       const filterValue = computed(()=> count.value * 2)
 
@@ -33,6 +42,8 @@
         console.log('onM');
         setTimeout(() => {
           count.value = 10
+          nameObj.name = '11fd'
+          age.value = 'f1'
         }, 1000)
       })
 
@@ -45,7 +56,7 @@
       })
 
       return {
-        count, filterValue
+        count, filterValue,nameObj, name,age
       }
     },
   }).mount('#app')

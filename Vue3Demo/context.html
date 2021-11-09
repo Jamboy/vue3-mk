@@ -1,0 +1,59 @@
+<!--
+ * @Description: 
+ * @Author: Jamboy
+ * @Date: 2021-11-05 16:23:47
+ * @LastEditTime: 2021-11-05 17:20:38
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{data}}
+    <test nonProp='ff' @change='handleChange'>parent</test>
+  </div>
+</body>
+<script>
+  const { ref } = Vue
+  const app = Vue.createApp({
+    setup(props, context) {
+      const data = ref(111)
+      return { data }
+    },
+    methods: {
+      handleChange() {
+        alert('chage')
+      }
+    },
+  })
+
+  app.component('test', {
+    // props: ['nonprop'],
+    template: `<div @click="handleClick">{{data.name}}</div>`,
+    setup(props, context) {
+      const { reactive, h } = Vue
+      const { attrs, slots, emit } = context
+      console.log('slots.default(): ', slots.default());
+      console.log('slots: ', slots);
+      console.log('attrs: ', attrs);
+      console.log('attrs: ', attrs.nonprop);
+      const data = reactive({ name: 'child' })
+      function handleClick() {
+        emit('change')
+      }
+      return { data, handleClick }
+    }
+  })
+
+  app.mount('#app')
+</script>
+
+</html>
