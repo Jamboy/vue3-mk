@@ -2,16 +2,14 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-09-13 13:51:39
- * @LastEditTime: 2021-11-05 11:32:23
+ * @LastEditTime: 2021-11-15 10:04:15
 -->
 <template>
-  <Home></Home>
+  <router-view></router-view>
 </template>
 <script>
-import Home from './views/home/Home'
 export default {
-  name: 'App',
-  components: { Home }
+  name: 'App'
 }
 </script>
 <style></style>

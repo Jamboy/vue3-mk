@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-05 17:21:32
- * @LastEditTime: 2021-11-06 09:22:59
+ * @LastEditTime: 2021-11-09 12:01:40
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +18,8 @@
 <body>
   <div id="app">
     <div>
-      <input type="text" :value="inputText" @input="handleChange">
-      <button>提交</button>
+      <input type="text" :value="inputText" @input="handleC">
+      <button @click="addItem(inputText)">提交</button>
     </div>
     <ul>
       <li v-for="item in todoList">{{item}}</li>
@@ -33,24 +33,30 @@
     const { ref, reactive } = Vue
     const todoList = reactive([])
     const addItem = (item) => {
+      console.log('item: ', item);
       todoList.push(item)
     }
-
     return { todoList, addItem }
   }
 
   const handleChange = () => {
     const { ref } = Vue
     let inputText = ref()
-    const handleChange = (value) => {
-      inputText.value = value
+    const handleC = (e) => {
+      console.log('e: ', e);
+      inputText.value = e.target.value
     }
-    return { inputText, handleChange }
+    return { inputText, handleC }
   }
 
   const app = Vue.createApp({
     setup(props) {
-      return { inputText, handleChange, todoList }
+      const {todoList,addItem} = handleList() 
+      const {inputText,handleC} = handleChange() 
+
+      return{
+        todoList,addItem,inputText,handleC
+      }
     }
   })
   app.mount('#app')

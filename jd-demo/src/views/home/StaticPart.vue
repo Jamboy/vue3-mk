@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-11-05 11:34:55
- * @LastEditTime: 2021-11-05 11:36:17
+ * @LastEditTime: 2021-11-10 17:31:08
 -->
 <template>
   <div class="position">
@@ -19,62 +19,64 @@
          src="http://www.dell-lee.com/imgs/vue3/banner.jpg" />
   </div>
   <div class="icons">
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
+    <div class="icons__item"
+         v-for="(item,index) in iconList"
+         v-bind:key="index">
+      <img :src="item.url"
            class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
-    </div>
-    <div class="icons__item">
-      <img src="http://www.dell-lee.com/imgs/vue3/超市.png"
-           class="icons__item__img" />
-      <p class="icons__item__desc">超市便利</p>
+      <p class="icons__item__desc">{{item.name}}</p>
     </div>
   </div>
   <div class="gap"></div>
 </template>
 <script>
 export default {
-  name: 'StaticPart'
+  name: 'StaticPart',
+  setup () {
+    const iconList = [
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      }, {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        name: '超市便利'
+      }
+    ]
+    return { iconList }
+  }
+
 }
 </script>
 <style lang='scss'>

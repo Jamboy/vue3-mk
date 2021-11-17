@@ -2,71 +2,64 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-11-05 11:38:09
- * @LastEditTime: 2021-11-05 11:39:11
+ * @LastEditTime: 2021-11-10 15:24:31
 -->
 <template>
-      <div class="nearby">
-        <h3 class="nearby__title">附近店铺</h3>
-        <div class="nearby__item">
-          <div class="nearby__item__img__container">
-            <img class="nearby__item__img__container__img"
-                 src="http://www.dell-lee.com/imgs/vue3/菜市场.png" />
-          </div>
-          <div class="nearby__item__content">
-            <div class="nearby__item__content__title">沃尔玛</div>
-            <div class="nearby__item__content__tags">月售1万+</div>
-            <div class="nearby__item__content__tag">
-              VIP尊享满89元减4元运费券（每月3张）
-            </div>
-          </div>
-        </div>
-
-        <div class="nearby__item">
-          <div class="nearby__item__img__container">
-            <img class="nearby__item__img__container__img"
-                 src="http://www.dell-lee.com/imgs/vue3/菜市场.png" />
-          </div>
-          <div class="nearby__item__content">
-            <div class="nearby__item__content__title">沃尔玛</div>
-            <div class="nearby__item__content__tags">月售1万+</div>
-            <div class="nearby__item__content__tag">
-              VIP尊享满89元减4元运费券（每月3张）
-            </div>
-          </div>
-        </div>
-
-        <div class="nearby__item">
-          <div class="nearby__item__img__container">
-            <img class="nearby__item__img__container__img"
-                 src="http://www.dell-lee.com/imgs/vue3/菜市场.png" />
-          </div>
-          <div class="nearby__item__content">
-            <div class="nearby__item__content__title">沃尔玛</div>
-            <div class="nearby__item__content__tags">月售1万+</div>
-            <div class="nearby__item__content__tag">
-              VIP尊享满89元减4元运费券（每月3张）
-            </div>
-          </div>
-        </div>
-
-        <div class="nearby__item">
-          <div class="nearby__item__img__container">
-            <img class="nearby__item__img__container__img"
-                 src="http://www.dell-lee.com/imgs/vue3/菜市场.png" />
-          </div>
-          <div class="nearby__item__content">
-            <div class="nearby__item__content__title">沃尔玛</div>
-            <div class="nearby__item__content__tags">月售1万+</div>
-            <div class="nearby__item__content__tag">
-              VIP尊享满89元减4元运费券（每月3张）
-            </div>
-          </div>
-        </div>
+  <div class="nearby">
+    <h3 class="nearby__title">附近店铺</h3>
+    <div class="nearby__item"
+         v-for="(item,index) in nearbyList"
+         :key="index">
+      <div class="nearby__item__img__container">
+        <img class="nearby__item__img__container__img"
+             :src="item.url" />
       </div>
+      <div class="nearby__item__content">
+        <div class="nearby__item__content__title">{{item.title}}</div>
+        <div class="nearby__item__content__tags">{{item.tags}}</div>
+        <div class="nearby__item__content__tag">{{item.tag}}</div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-  name: 'Nearby'
+  name: 'Nearby',
+  setup () {
+    const nearbyList = [
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
+        title: '沃尔玛',
+        tags: '月售1万+',
+        tag: 'VIP尊享满89元减4元运费券（每月3张）'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
+        title: '沃尔玛1',
+        tags: '月售1万+',
+        tag: 'VIP尊享满89元减4元运费券（每月3张）'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
+        title: '沃尔玛2',
+        tags: '月售1万+',
+        tag: 'VIP尊享满89元减4元运费券（每月3张）'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
+        title: '沃尔玛3',
+        tags: '月售1万+',
+        tag: 'VIP尊享满89元减4元运费券（每月3张）'
+      },
+      {
+        url: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
+        title: '沃尔玛4',
+        tags: '月售1万+',
+        tag: 'VIP尊享满89元减4元运费券（每月3张）'
+      }
+    ]
+    return { nearbyList }
+  }
 }
 </script>
 <style lang="scss">
@@ -109,7 +102,6 @@ export default {
         font-size: 0.12rem;
         line-height: 0.18rem;
       }
-
       &__tag {
         color: red;
       }
