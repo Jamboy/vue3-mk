@@ -2,7 +2,7 @@
  * @Description:注册
  * @Author: Jamboy
  * @Date: 2021-11-09 16:38:25
- * @LastEditTime: 2021-11-15 11:25:58
+ * @LastEditTime: 2021-11-17 16:53:29
 -->
 <template>
   <div class="wrapper">
@@ -11,16 +11,19 @@
     <div class="wrapper__input">
       <input class="wrapper__input__content"
              type="text"
+             v-model="username"
              placeholder="请输入手机号">
     </div>
     <div class="wrapper__input">
       <input class="wrapper__input__content"
              type="text"
+             v-model="password"
              placeholder="请输入密码">
     </div>
     <div class="wrapper__input">
       <input class="wrapper__input__content"
              type="text"
+             v-model="passwordConfirm"
              placeholder="请确认密码">
     </div>
     <div class="wrapper__register-btn"
@@ -31,19 +34,76 @@
          @click="handleBackLogin">
       已有账号?去登录
     </div>
+    <Toast v-if="show"
+           :msg="toastMsg">
+    </Toast>
   </div>
 </template>
 <script>
-
 import { useRouter } from 'vue-router'
+import { reactive, toRefs } from 'vue'
+import Toast, { userToastEffect } from '../../components/Toast'
+import { post } from '../../utils/request'
+
+const userRegisterEffect = (showToast) => {
+  const registerData = reactive({ username: '', password: '', passwordConfirm: '' })
+  const { username, password, passwordConfirm } = toRefs(registerData)
+  const router = useRouter()
+
+  const checkPassword = () => {
+    if (username.value === '') {
+      showToast('请输入用户名')
+      return false
+    }
+    if (password.value === '' || passwordConfirm.value === '') {
+      showToast('请检查密码是否输入')
+      return false
+    }
+    if (password.value !== passwordConfirm.value) {
+      showToast('两次密码不一致，请确认')
+      return false
+    }
+    return true
+  }
+
+  const handleRegister = async () => {
+    if (!checkPassword()) {
+      console.log(checkPassword())
+      return
+    }
+    const res = await post('/api/user/register', registerData)
+    console.log('res: ', res)
+    if (res?.errno === 0) {
+      localStorage.isLogin = true
+      router.push({ name: 'Home' })
+      showToast('登录成功')
+    } else {
+      showToast(res)
+    }
+  }
+  return { username, password, passwordConfirm, handleRegister }
+}
+
 export default {
   name: 'Register',
+  components: { Toast },
   setup () {
     const router = useRouter()
+    const { show, toastMsg, showToast } = userToastEffect()
+    const {
+      username, password,
+      passwordConfirm, handleRegister
+    } = userRegisterEffect(showToast)
+
     const handleBackLogin = () => {
       router.push({ name: 'Login' })
     }
-    return { handleBackLogin }
+
+    return {
+      show, toastMsg, showToast,
+      username, password, passwordConfirm, handleRegister,
+      handleBackLogin
+    }
   }
 }
 </script>
