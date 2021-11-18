@@ -2,17 +2,16 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-09-13 13:51:39
- * @LastEditTime: 2021-11-15 13:44:04
+ * @LastEditTime: 2021-11-18 14:07:43
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/home/Home.vue'
 import Login from '../views/login/Login.vue'
-import Register from '../views/register/Register.vue'
+
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "shop" */ '../views/home/Home.vue')
   },
   {
     path: '/login',
@@ -26,11 +25,16 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: Register,
+    component: () => import(/* webpackChunkName: "shop" */ '../views/home/Home.vue'),
     beforeEnter (to, form, next) {
       const { isLogin } = localStorage
       isLogin ? next({ name: 'Home' }) : next()
     }
+  },
+  {
+    path: '/shop',
+    name: 'Shop',
+    component: () => import(/* webpackChunkName: "shop" */ '../views/shop/Shop.vue')
   }
   // route level code-split ting
   // this generates a separate chunk (about.[hash].js) for this route
