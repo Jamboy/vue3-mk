@@ -2,10 +2,10 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-11-18 11:10:34
- * @LastEditTime: 2021-11-18 14:39:43
+ * @LastEditTime: 2021-11-20 15:38:52
 -->
 <template>
-  <div class="nearby__item"
+  <div :class="{'nearby__item':true, 'nearby__item__border' : showBorder}"
        @click="handleClick">
     <div class="nearby__item__img__container">
       <img class="nearby__item__img__container__img"
@@ -20,7 +20,13 @@
 </template>
 <script>
 export default {
-  props: ['item'],
+  props: {
+    item: Object,
+    showBorder: {
+      type: Boolean,
+      default: true
+    }
+  },
   name: 'ShopInfo',
   // emits: ['click'],
   setup (props, { emit }) {
@@ -34,11 +40,16 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '../../style/mixins';
+@import '../../style/viriables';
 .nearby__item {
   display: flex;
   flex-direction: row;
   height: 0.8rem;
   margin-bottom: 0.2rem;
+  padding-bottom: 0.1rem;
+  &__border {
+    border-bottom: 1px solid $search-bgColor;
+  }
 }
 .nearby__item__img__container {
   display: flex;

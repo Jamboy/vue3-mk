@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-11-05 11:38:09
- * @LastEditTime: 2021-11-18 14:59:17
+ * @LastEditTime: 2021-11-20 15:48:01
 -->
 <template>
   <div class="nearby">
@@ -38,8 +38,10 @@ export default {
     const router = useRouter()
     getNearbyList()
     const handleShopClick = (e) => {
-      console.log('handleShopClick: ', e.id)
-      router.push({ name: 'Shop' })
+      if (e.id !== undefined) {
+        // router.push({ name: 'Shop', params: { id: e.id } })
+        router.push({ path: `/shop/${e.id}` })
+      }
     }
     return { nearbyList, getNearbyList, handleShopClick }
   }

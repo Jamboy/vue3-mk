@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-09-13 13:51:39
- * @LastEditTime: 2021-11-18 14:07:43
+ * @LastEditTime: 2021-11-20 15:42:36
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from '../views/login/Login.vue'
@@ -32,7 +32,7 @@ const routes = [
     }
   },
   {
-    path: '/shop',
+    path: '/shop/:id',
     name: 'Shop',
     component: () => import(/* webpackChunkName: "shop" */ '../views/shop/Shop.vue')
   }
