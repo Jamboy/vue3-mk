@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-11-18 10:55:21
- * @LastEditTime: 2021-11-22 09:35:51
+ * @LastEditTime: 2021-11-22 14:04:24
 -->
 <template>
   <div class="wrapper">
@@ -20,6 +20,7 @@
     </ShopInfo>
     <Content></Content>
   </div>
+  <BottomTool></BottomTool>
 </template>
 <script>
 import { onMounted } from '@vue/runtime-core'
@@ -27,8 +28,9 @@ import { useRouter, useRoute } from 'vue-router'
 import { ref } from 'vue'
 import ShopInfo from '../../components/ShopInfo.vue'
 import Content from '../../components/Content.vue'
+import BottomTool from '../../components/BottomTool.vue'
 export default {
-  components: { ShopInfo, Content },
+  components: { ShopInfo, Content, BottomTool },
   setup (props, context) {
     const router = useRouter()
     const route = useRoute()

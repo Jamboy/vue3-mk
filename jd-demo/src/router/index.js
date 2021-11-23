@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-09-13 13:51:39
- * @LastEditTime: 2021-11-20 15:42:36
+ * @LastEditTime: 2021-11-22 14:35:58
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from '../views/login/Login.vue'
@@ -35,6 +35,11 @@ const routes = [
     path: '/shop/:id',
     name: 'Shop',
     component: () => import(/* webpackChunkName: "shop" */ '../views/shop/Shop.vue')
+  },
+  {
+    path: '/orderConfirm/:shopId',
+    name: 'OrderConfirm',
+    component: () => import(/* webpackChunkName: "orderConfirm" */ '../views/orderConfirm/OrderConfirm.vue')
   }
   // route level code-split ting
   // this generates a separate chunk (about.[hash].js) for this route

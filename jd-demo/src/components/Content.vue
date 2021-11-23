@@ -2,37 +2,29 @@
  * @Description:
  * @Author: Jamboy
  * @Date: 2021-11-22 09:34:45
- * @LastEditTime: 2021-11-22 11:08:36
+ * @LastEditTime: 2021-11-22 13:45:41
 -->
 <template>
   <div class="content">
     <div class="category">
-      <div class="category__item category__item__active">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
-      <div class="category__item">全部商品</div>
+      <div v-for="(item,index) in categories"
+           :key="index"
+           @click="() => handleCategoryClick(item.tab)"
+           :class="{'category__item': true, 'category__item__active': currentTab === item.tab}">{{item.name}}</div>
     </div>
     <div class="product">
-      <div class="product__item">
+      <div class="product__item"
+           v-for="item in list"
+           :key="item._id">
         <image class="product__item__img"
-               src="http://www.dell-lee.com/imgs/vue3/near.png">
+               :src="item.imgUrl">
         </image>
         <div class="product__item__detail">
-          <h4 class="product__item__title">番茄</h4>
-          <p class="product__item__info">月售10件</p>
+          <h4 class="product__item__title">{{item.name}}</h4>
+          <p class="product__item__info">月售{{item.sales}}件</p>
           <p class="product__item__price">
-            <span class="prodcut__item__yen">&yen;</span>33.6
-            <span class="prodcut__item__origin">&yen;66.6</span>
+            <span class="prodcut__item__yen">&yen;</span>{{item.price}}
+            <span class="prodcut__item__origin">&yen;{{item.oldPrice}}</span>
           </p>
         </div>
         <div class="product__number">
@@ -44,8 +36,44 @@
   </div>
 </template>
 <script>
-export default {
+import { get } from '../utils/request'
+import { ref } from 'vue'
 
+const useProductList = () => {
+  const categories = [{
+    name: '全部商品',
+    tab: 'all'
+  }, {
+    name: '秒杀',
+    tab: 'seckill'
+  }]
+  const list = ref([])
+  const currentTab = ref('all')
+
+  const getContent = async (tab) => {
+    const res = await get('/api/shop/1/products', {
+      tab
+    })
+    list.value = res.data
+    console.log(res.data)
+  }
+
+  const handleCategoryClick = (tab) => {
+    getContent(tab)
+    currentTab.value = tab
+    console.log(currentTab.value)
+  }
+
+  return { categories, list, currentTab, getContent, handleCategoryClick }
+}
+
+export default {
+  name: 'Content',
+  setup () {
+    const { categories, list, currentTab, getContent, handleCategoryClick } = useProductList()
+    getContent('all')
+    return { list, currentTab, categories, handleCategoryClick }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -75,6 +103,7 @@ export default {
 
   .product {
     overflow-y: scroll;
+    overflow: hidden;
     flex: 1;
     &__item {
       position: relative;
@@ -132,7 +161,6 @@ export default {
         font-size: 0.2rem;
         line-height: 0.16rem;
       }
-
     }
   }
 }

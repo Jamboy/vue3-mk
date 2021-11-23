@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-22 16:14:22
- * @LastEditTime: 2021-11-22 17:19:05
+ * @LastEditTime: 2021-11-23 17:28:13
  */
 // let fibonacci: number[] = [1, 1, 2, 3, 5];
 // let fibonacci1: number[] = [1, '1', 2, 3, 5];
@@ -54,3 +54,28 @@ function reverse(x: number | string): number | string | void {
 
 let a = [];
 push(a, 1, 2, 3);
+
+
+class Animal {
+  private name;
+  public constructor(name) {
+    this.name = name;
+  }
+}
+
+// let b = new Animal('Jack');
+// console.log(b.name);
+// b.name = 'Tom';
+
+
+function copyFields<T extends U, U>(target: T, source: U): T {
+  for (let id in source) {
+      target[id] = (<T>source)[id];
+  }
+  return target;
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+
+copyFields(x, { b: 10, d: 20 });
+console.log('copyFields: ', copyFields(x, { b: 10, d: 20 }));
