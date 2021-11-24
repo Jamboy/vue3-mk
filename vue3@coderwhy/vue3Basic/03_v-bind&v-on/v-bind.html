@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-24 09:44:08
- * @LastEditTime: 2021-11-24 09:50:24
+ * @LastEditTime: 2021-11-24 10:30:17
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +19,15 @@
 <body>
   <div id="app">
     {{msg}}
+    <a :href="url">11</a>
   </div>
 </body>
 <script>
   const app = Vue.createApp({
     data() {
       return {
-        msg: 'hello world'
+        msg: 'hello world',
+        url:'www.baidu.com'
       }
     }
   }).mount('#app')

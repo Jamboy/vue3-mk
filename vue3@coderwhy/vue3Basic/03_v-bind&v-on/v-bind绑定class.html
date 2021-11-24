@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-24 09:44:08
- * @LastEditTime: 2021-11-24 09:50:24
+ * @LastEditTime: 2021-11-24 10:37:55
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,16 +19,34 @@
 <body>
   <div id="app">
     {{msg}}
+    <!-- <div :class="{'active': isActive}">fasdf</div> -->
+    <div :class="style">fasdf</div>
+    <button @click="change">change</button>
   </div>
 </body>
 <script>
   const app = Vue.createApp({
     data() {
       return {
-        msg: 'hello world'
+        msg: 'hello world',
+        isActive: true,
+        style: {
+          active: true
+        }
+      }
+    },
+    methods: {
+      change() {
+        // this.isActive = !this.isActive
+        this.style.active = !this.style.active
       }
     }
   }).mount('#app')
 </script>
+<style>
+  .active {
+    color: red;
+  }
+</style>
 
 </html>

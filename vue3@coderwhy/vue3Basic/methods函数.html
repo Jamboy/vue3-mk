@@ -1,8 +1,8 @@
 <!--
  * @Description: 
  * @Author: Jamboy
- * @Date: 2021-11-24 09:44:08
- * @LastEditTime: 2021-11-24 09:50:24
+ * @Date: 2021-11-24 09:28:11
+ * @LastEditTime: 2021-11-24 09:37:35
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -13,19 +13,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://unpkg.com/vue@next"></script>
-
 </head>
 
 <body>
   <div id="app">
-    {{msg}}
+    <h1 @click="add">+++11</h1>
   </div>
 </body>
 <script>
   const app = Vue.createApp({
-    data() {
-      return {
-        msg: 'hello world'
+    methods: {
+      // add: () => {
+      //   console.log(this);
+      // }
+
+      add() {
+        console.log(this);
       }
     }
   }).mount('#app')

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-24 09:44:08
- * @LastEditTime: 2021-11-24 09:50:24
+ * @LastEditTime: 2021-11-24 10:09:27
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +18,16 @@
 
 <body>
   <div id="app">
-    {{msg}}
+    <h2>{{msg}}</h2>
+    <h2>{{count * 10}}</h2>
   </div>
 </body>
 <script>
   const app = Vue.createApp({
     data() {
       return {
-        msg: 'hello world'
+        msg: 'hello world',
+        count:10
       }
     }
   }).mount('#app')

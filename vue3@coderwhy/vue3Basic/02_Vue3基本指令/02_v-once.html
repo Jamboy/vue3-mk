@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Jamboy
  * @Date: 2021-11-24 09:44:08
- * @LastEditTime: 2021-11-24 09:50:24
+ * @LastEditTime: 2021-11-24 10:17:07
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +18,22 @@
 
 <body>
   <div id="app">
-    {{msg}}
+    <h2 v-once>{{msg}}</h2>
+    <button @click="change">1111</button>
+    <div v-html="html"></div>
   </div>
 </body>
 <script>
   const app = Vue.createApp({
     data() {
       return {
-        msg: 'hello world'
+        msg: 'hello world',
+        html:'<h2>fff</h2>'
+      }
+    },
+    methods:{
+      change(){
+        this.msg = '212'
       }
     }
   }).mount('#app')
