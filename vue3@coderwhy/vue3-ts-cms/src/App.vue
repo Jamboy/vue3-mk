@@ -1,3 +1,9 @@
+<!--
+ * @Description:
+ * @Author: Jamboy
+ * @Date: 2021-12-03 15:32:23
+ * @LastEditTime: 2021-12-03 15:53:32
+-->
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
@@ -5,6 +11,14 @@
   </div>
   <router-view />
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'App',
+  setup() {},
+})
+</script>
 
 <style lang="less">
 #app {
